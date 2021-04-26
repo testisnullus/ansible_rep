@@ -1,0 +1,12 @@
+---
+vm_location: "/home/pc-5/VMs"
+
+guests:
+  VM1:
+    mem: 2048
+    cpus: 1
+    disk_path: /home/pc-5/ansible/kvm/vhdd/diskVM1.qcow2
+    disk_size: 20
+    os_type: ubuntu20.04
+    cdrom_path: /home/pc-5/ansible/kvm/iso/Ubuntu-20.04.2-live-server-amd64.iso
+    network: host-bridge
