@@ -1,0 +1,10 @@
+---
+- name: Running playbooks
+  hosts: localhost
+  become: yes
+  become_method: sudo
+  vars_files: vms.yaml
+
+  tasks:
+  - include: ./pre-conf.yaml
+  - include: ./create_kvm.yaml

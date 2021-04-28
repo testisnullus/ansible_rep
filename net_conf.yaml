@@ -1,0 +1,28 @@
+---
+  - name: Create net
+    hosts: localhost
+    become: yes
+    become_method: sudo
+
+    vars:
+       interface: eno1
+       br_name: br0
+       ip: 192.168.8.108/24
+       gw: 192.168.8.1
+
+    tasks:
+      - name: Creating network
+        template:
+          src: /home/pc-5/ansible/templates/template-network.j2
+          dest: /etc/netplan/00-installer-config.yaml
+
+      - name: Creating xml
+        template:
+          src: /home/pc-5/ansible/templates/template_xml.j2
+          dest: /home/pc-5/ansible/xml/host-bridge.xml
+
+      - name: Start xml file
+        command: /home/pc-5/ansible_rep/scripts/net.sh
+
+      - name: Start netplan
+        command: netplan apply
